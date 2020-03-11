@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableFooterView = UIView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: TableViewCellsIdentifiers.newsTableViewCellIdentifier.rawValue)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 134
         return tableView
@@ -58,10 +58,19 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: TableViewCellsIdentifiers.newsTableViewCellIdentifier.rawValue, for: indexPath) as! NewsTableViewCell
+
         let article = articles[indexPath.row]
-        tableViewCell.textLabel?.text = article.title
-        
+        tableViewCell.titleLabel.text = article.title
+        tableViewCell.contentLabel.text = article.content
+
+        if let urlToImage = article.urlToImage {
+            tableViewCell.isHidden = false
+            tableViewCell.thumbnailView.load(url: urlToImage)
+        } else {
+            tableViewCell.isHidden = true
+        }
+
         return tableViewCell
     }
 }
