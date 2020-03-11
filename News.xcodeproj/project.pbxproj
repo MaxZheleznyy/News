@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		5074782C24187E1A007CEC6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5074782A24187E1A007CEC6A /* Main.storyboard */; };
 		5074782E24187E1A007CEC6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5074782D24187E1A007CEC6A /* Assets.xcassets */; };
 		5074783124187E1A007CEC6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5074782F24187E1A007CEC6A /* LaunchScreen.storyboard */; };
+		5074783A24187E7E007CEC6A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5074783924187E7E007CEC6A /* RxSwift */; };
+		5074783C24187E7E007CEC6A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 5074783B24187E7E007CEC6A /* RxCocoa */; };
+		5074783F24187E8C007CEC6A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5074783E24187E8C007CEC6A /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5074783F24187E8C007CEC6A /* Alamofire in Frameworks */,
+				5074783C24187E7E007CEC6A /* RxCocoa in Frameworks */,
+				5074783A24187E7E007CEC6A /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +89,11 @@
 			dependencies = (
 			);
 			name = News;
+			packageProductDependencies = (
+				5074783924187E7E007CEC6A /* RxSwift */,
+				5074783B24187E7E007CEC6A /* RxCocoa */,
+				5074783E24187E8C007CEC6A /* Alamofire */,
+			);
 			productName = News;
 			productReference = 5074782124187E1A007CEC6A /* News.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +122,10 @@
 				Base,
 			);
 			mainGroup = 5074781824187E19007CEC6A;
+			packageReferences = (
+				5074783824187E7E007CEC6A /* XCRemoteSwiftPackageReference "RxSwift" */,
+				5074783D24187E8C007CEC6A /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 5074782224187E1A007CEC6A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -338,6 +353,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5074783824187E7E007CEC6A /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		5074783D24187E8C007CEC6A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5074783924187E7E007CEC6A /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5074783824187E7E007CEC6A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		5074783B24187E7E007CEC6A /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5074783824187E7E007CEC6A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		5074783E24187E8C007CEC6A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5074783D24187E8C007CEC6A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5074781924187E19007CEC6A /* Project object */;
 }
