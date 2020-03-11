@@ -18,9 +18,12 @@ enum ClientError: Error {
 }
 
 class NewsViewModel {
-    func headlines() -> Single<ArticlesResponse> {
+    
+    func pullFreshHeadlines() -> Single<ArticlesResponse> {
         return Single.create { (emitter) -> Disposable in
+            
             let session = Alamofire.Session()
+            
             session.request(path).responseJSON { (response) in
                 if let error = response.error {
                     emitter(.error(error))

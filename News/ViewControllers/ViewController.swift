@@ -14,37 +14,84 @@ class ViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel = NewsViewModel()
     
-    private var articles: [Article] = []
+//    private let refreshControlColorArray: [UIColor] =
     
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.tableFooterView = UIView()
-        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: TableViewCellsIdentifiers.newsTableViewCellIdentifier.rawValue)
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 134
-        return tableView
-    }()
+    private var articles: [Article] = []
+    private let refreshControlColorArray: [UIColor] = [
+        ColorPallete.amazonOrange,
+        ColorPallete.airbnbPink,
+        ColorPallete.starbuksGreen,
+        ColorPallete.twitchPurple,
+        ColorPallete.youtubeRed
+    ]
+    
+    private let refreshControl = UIRefreshControl()
+    
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(tableView)
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
-        ])
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        configureTableView()
+        configureRefreshControl()
+        pullHeadlinesThruViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let index = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: index, animated: true)
+        }
+    }
+    
+    private func configureTableView() {
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: TableViewCellsIdentifiers.newsTableViewCellIdentifier.rawValue)
+        
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func configureRefreshControl() {
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
         
-        viewModel.headlines().subscribe(onSuccess: { [weak self] response in
+        randomizeRefreshControlColor()
+        refreshControl.addTarget(self, action: #selector(repullHeadlinesThruViewModel(_:)), for: .valueChanged)
+    }
+    
+    @objc private func repullHeadlinesThruViewModel(_ sender: Any) {
+        randomizeRefreshControlColor()
+        
+        pullHeadlinesThruViewModel()
+    }
+    
+    private func pullHeadlinesThruViewModel() {
+        viewModel.pullFreshHeadlines().subscribe(onSuccess: { [weak self] response in
             self?.articles = response.articles
+            self?.refreshControl.endRefreshing()
             self?.tableView.reloadData()
-        }, onError: { (error) in
-            print("Receive error: \(error)")
+            }, onError:  { error in
+                self.refreshControl.endRefreshing()
+                print("Receive error: \(error)")
         }).disposed(by: disposeBag)
+    }
+    
+    private func randomizeRefreshControlColor() {
+        if let nonEmptyColor = refreshControlColorArray.randomElement() {
+            refreshControl.tintColor = nonEmptyColor
+        } else {
+            refreshControl.tintColor = ColorPallete.starbuksGreen
+        }
+        
+        var attributes = [NSAttributedString.Key: AnyObject]()
+        attributes[.foregroundColor] = refreshControl.tintColor
+        let attributedString = NSAttributedString(string: "Fetching News...", attributes: attributes)
+
+        refreshControl.attributedTitle = attributedString
     }
 }
 

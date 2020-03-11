@@ -13,7 +13,7 @@ class NewsTableViewCell: UITableViewCell {
     let titleLabel: UILabel = {
         let lable = UILabel()
         lable.translatesAutoresizingMaskIntoConstraints = false
-        lable.numberOfLines = 3
+        lable.numberOfLines = 2
         lable.font = UIFont.systemFont(ofSize: 14)
         return lable
     }()
@@ -21,7 +21,7 @@ class NewsTableViewCell: UITableViewCell {
     let contentLabel: UILabel = {
         let lable = UILabel()
         lable.translatesAutoresizingMaskIntoConstraints = false
-        lable.numberOfLines = 4
+        lable.numberOfLines = 2
         lable.textColor = .darkGray
         lable.font = UIFont.systemFont(ofSize: 12)
         return lable
