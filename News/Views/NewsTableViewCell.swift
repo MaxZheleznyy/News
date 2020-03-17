@@ -9,6 +9,8 @@
 import UIKit
 
 class NewsTableViewCell: UITableViewCell {
+    
+    static let cellIdentifier = "NewsTableViewCellIdentifier"
 
     let titleLabel: UILabel = {
         let lable = UILabel()

@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     }
     
     private func configureTableView() {
-        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: TableViewCellsIdentifiers.newsTableViewCellIdentifier.rawValue)
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.cellIdentifier)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -101,7 +101,7 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: TableViewCellsIdentifiers.newsTableViewCellIdentifier.rawValue, for: indexPath) as! NewsTableViewCell
+        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.cellIdentifier, for: indexPath) as! NewsTableViewCell
 
         let article = articles[indexPath.row]
         tableViewCell.titleLabel.text = article.title
