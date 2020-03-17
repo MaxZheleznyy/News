@@ -14,14 +14,10 @@ class ViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel = NewsViewModel()
     
-//    private let refreshControlColorArray: [UIColor] =
-    
     private var articles: [Article] = []
     private let refreshControlColorArray: [UIColor] = [
         ColorPallete.amazonOrange,
         ColorPallete.airbnbPink,
-        ColorPallete.starbuksGreen,
-        ColorPallete.twitchPurple,
         ColorPallete.youtubeRed
     ]
     
@@ -84,7 +80,7 @@ class ViewController: UIViewController {
         if let nonEmptyColor = refreshControlColorArray.randomElement() {
             refreshControl.tintColor = nonEmptyColor
         } else {
-            refreshControl.tintColor = ColorPallete.starbuksGreen
+            refreshControl.tintColor = ColorPallete.amazonOrange
         }
         
         var attributes = [NSAttributedString.Key: AnyObject]()
