@@ -101,7 +101,9 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.cellIdentifier, for: indexPath) as! NewsTableViewCell
+        guard let tableViewCell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.cellIdentifier, for: indexPath) as? NewsTableViewCell else {
+            return UITableViewCell()
+        }
 
         let article = articles[indexPath.row]
         tableViewCell.titleLabel.text = article.title
