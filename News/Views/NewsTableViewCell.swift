@@ -13,20 +13,21 @@ class NewsTableViewCell: UITableViewCell {
     static let cellIdentifier = "NewsTableViewCellIdentifier"
 
     let titleLabel: UILabel = {
-        let lable = UILabel()
-        lable.translatesAutoresizingMaskIntoConstraints = false
-        lable.numberOfLines = 2
-        lable.font = UIFont.systemFont(ofSize: 14)
-        return lable
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textColor = .label
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        return label
     }()
 
     let contentLabel: UILabel = {
-        let lable = UILabel()
-        lable.translatesAutoresizingMaskIntoConstraints = false
-        lable.numberOfLines = 2
-        lable.textColor = .darkGray
-        lable.font = UIFont.systemFont(ofSize: 12)
-        return lable
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
+        label.textColor = .secondaryLabel
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        return label
     }()
 
     let thumbnailView: UIImageView = {
