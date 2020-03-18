@@ -32,10 +32,8 @@ class NewsTableViewCell: UITableViewCell {
     let thumbnailView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: 80),
-        ])
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
 
@@ -62,12 +60,21 @@ class NewsTableViewCell: UITableViewCell {
         addSubview(horizontalStackView)
 
         let padding: CGFloat = 16
-        NSLayoutConstraint.activate([
+        
+        let horizontalStackConstraints = [
             horizontalStackView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
             horizontalStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding),
             horizontalStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: padding),
             horizontalStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -padding),
-        ])
+        ]
+        
+        let thumbnailViewConstraints = [
+            thumbnailView.widthAnchor.constraint(equalToConstant: 80),
+            thumbnailView.heightAnchor.constraint(equalToConstant: 80)
+        ]
+        
+        let constraintsArray = horizontalStackConstraints + thumbnailViewConstraints
+        NSLayoutConstraint.activate(constraintsArray)
 
         horizontalStackView.addArrangedSubview(thumbnailView)
 

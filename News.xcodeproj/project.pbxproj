@@ -20,8 +20,6 @@
 		5074784324187EC2007CEC6A /* ArticlesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074784224187EC2007CEC6A /* ArticlesResponse.swift */; };
 		5074784524187ED9007CEC6A /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074784424187ED9007CEC6A /* NewsViewModel.swift */; };
 		5074784A24188197007CEC6A /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074784924188197007CEC6A /* NewsTableViewCell.swift */; };
-		5074784F24188411007CEC6A /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074784E24188411007CEC6A /* UIImageViewExtension.swift */; };
-		5074785224188445007CEC6A /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074785124188445007CEC6A /* ImageLoader.swift */; };
 		5074785A2418C1BB007CEC6A /* ColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507478592418C1BB007CEC6A /* ColorPallete.swift */; };
 		50FAC97C24219C0200FB48CA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 50FAC97B24219C0200FB48CA /* Kingfisher */; };
 /* End PBXBuildFile section */
@@ -39,8 +37,6 @@
 		5074784224187EC2007CEC6A /* ArticlesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesResponse.swift; sourceTree = "<group>"; };
 		5074784424187ED9007CEC6A /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		5074784924188197007CEC6A /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
-		5074784E24188411007CEC6A /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
-		5074785124188445007CEC6A /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		507478592418C1BB007CEC6A /* ColorPallete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPallete.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,8 +121,6 @@
 		5074785024188416007CEC6A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5074784E24188411007CEC6A /* UIImageViewExtension.swift */,
-				5074785124188445007CEC6A /* ImageLoader.swift */,
 				507478592418C1BB007CEC6A /* ColorPallete.swift */,
 			);
 			path = Extensions;
@@ -231,8 +225,6 @@
 				5074784524187ED9007CEC6A /* NewsViewModel.swift in Sources */,
 				5074782924187E1A007CEC6A /* ViewController.swift in Sources */,
 				5074782524187E1A007CEC6A /* AppDelegate.swift in Sources */,
-				5074784F24188411007CEC6A /* UIImageViewExtension.swift in Sources */,
-				5074785224188445007CEC6A /* ImageLoader.swift in Sources */,
 				5074785A2418C1BB007CEC6A /* ColorPallete.swift in Sources */,
 				5074782724187E1A007CEC6A /* SceneDelegate.swift in Sources */,
 				5074784324187EC2007CEC6A /* ArticlesResponse.swift in Sources */,

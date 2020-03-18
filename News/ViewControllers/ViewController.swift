@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import Kingfisher
 import SafariServices
 
 class ViewController: UIViewController {
@@ -109,9 +110,19 @@ extension ViewController: UITableViewDataSource {
         tableViewCell.titleLabel.text = article.title
         tableViewCell.contentLabel.text = article.content
 
-        if let urlToImage = article.urlToImage {
+        if let stringedURLToImage = article.urlToImage, let urlToImage = URL(string: stringedURLToImage) {
             tableViewCell.isHidden = false
-            tableViewCell.thumbnailView.load(url: urlToImage)
+            
+            tableViewCell.thumbnailView.kf.indicatorType = .activity
+            tableViewCell.thumbnailView.kf.setImage(with: urlToImage) { result in
+                switch result {
+                case .success(let value):
+                    print("Do any additional required work with \(value)")
+                case .failure(let error):
+                    tableViewCell.isHidden = true
+                    print("Job failed: \(error.localizedDescription)")
+                }
+            }
         } else {
             tableViewCell.isHidden = true
         }
