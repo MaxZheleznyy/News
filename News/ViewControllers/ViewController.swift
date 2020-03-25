@@ -15,7 +15,17 @@ class ViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel = NewsViewModel()
     
-    private var articles: [Article] = []
+    private var articles: [Article] = [] {
+        didSet {
+            if articles.count <= 0 {
+                tableView.isHidden = true
+            } else {
+                tableView.isHidden = false
+                tableView.separatorStyle = .singleLine
+            }
+        }
+    }
+    
     private let refreshControlColorArray: [UIColor] = [
         ColorPallete.amazonOrange,
         ColorPallete.airbnbPink,
