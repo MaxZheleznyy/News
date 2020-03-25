@@ -108,7 +108,7 @@ extension ViewController: UITableViewDataSource {
 
         let article = articles[indexPath.row]
         tableViewCell.titleLabel.text = article.title
-        tableViewCell.contentLabel.text = article.content
+        tableViewCell.contentLabel.text = configureContentText(textToConfigure: article.content)
 
         if let stringedURLToImage = article.urlToImage, let urlToImage = URL(string: stringedURLToImage) {
             tableViewCell.isHidden = false
@@ -128,6 +128,14 @@ extension ViewController: UITableViewDataSource {
         }
 
         return tableViewCell
+    }
+    
+    private func configureContentText(textToConfigure: String?) -> String {
+        if let nonEmtptyTextToConfigure = textToConfigure, nonEmtptyTextToConfigure != "", nonEmtptyTextToConfigure.contains("getSimpleString(data.title)") == false {
+            return nonEmtptyTextToConfigure
+        } else {
+            return "Check out the article by tapping it"
+        }
     }
 }
 
