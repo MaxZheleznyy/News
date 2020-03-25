@@ -18,7 +18,6 @@ enum ClientError: Error {
 }
 
 class NewsViewModel {
-    
     func pullFreshHeadlines() -> Single<ArticlesResponse> {
         return Single.create { (emitter) -> Disposable in
             
@@ -34,9 +33,7 @@ class NewsViewModel {
                     return
                 }
                 do {
-                    let articles = try JSONDecoder().decode(
-                        ArticlesResponse.self,
-                        from: data)
+                    let articles = try JSONDecoder().decode(ArticlesResponse.self, from: data)
                     emitter(.success(articles))
                 } catch {
                     emitter(.error(error))

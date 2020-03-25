@@ -12,8 +12,19 @@ import Kingfisher
 import SafariServices
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    private let refreshControl = UIRefreshControl()
+    
     private let disposeBag = DisposeBag()
     private let viewModel = NewsViewModel()
+    
+    private let refreshControlColorArray: [UIColor] = [
+        ColorPallete.amazonOrange,
+        ColorPallete.airbnbPink,
+        ColorPallete.youtubeRed
+    ]
     
     private var articles: [Article] = [] {
         didSet {
@@ -25,16 +36,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    private let refreshControlColorArray: [UIColor] = [
-        ColorPallete.amazonOrange,
-        ColorPallete.airbnbPink,
-        ColorPallete.youtubeRed
-    ]
-    
-    private let refreshControl = UIRefreshControl()
-    
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +73,6 @@ class ViewController: UIViewController {
     
     @objc private func repullHeadlinesThruViewModel(_ sender: Any) {
         randomizeRefreshControlColor()
-        
         pullHeadlinesThruViewModel()
     }
     
@@ -141,7 +141,8 @@ extension ViewController: UITableViewDataSource {
     }
     
     private func configureContentText(textToConfigure: String?) -> String {
-        if let nonEmtptyTextToConfigure = textToConfigure, nonEmtptyTextToConfigure != "", nonEmtptyTextToConfigure.contains("getSimpleString(data.title)") == false {
+        if let nonEmtptyTextToConfigure = textToConfigure, nonEmtptyTextToConfigure != "",
+            nonEmtptyTextToConfigure.contains("getSimpleString(data.title)") == false {
             return nonEmtptyTextToConfigure
         } else {
             return "Check out the article by tapping it"
