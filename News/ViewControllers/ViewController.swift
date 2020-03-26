@@ -93,12 +93,6 @@ class ViewController: UIViewController {
         } else {
             refreshControl.tintColor = ColorPallete.amazonOrange
         }
-        
-        var attributes = [NSAttributedString.Key: AnyObject]()
-        attributes[.foregroundColor] = refreshControl.tintColor
-        let attributedString = NSAttributedString(string: "Fetching News...", attributes: attributes)
-
-        refreshControl.attributedTitle = attributedString
     }
 }
 
