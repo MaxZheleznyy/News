@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NewsViewController.swift
 //  News
 //
 //  Created by Maxim Zheleznyy on 3/10/20.
@@ -11,7 +11,7 @@ import RxSwift
 import Kingfisher
 import SafariServices
 
-class ViewController: UIViewController {
+class NewsViewController: UIViewController {
     
     //MARK: Contants and variables
     @IBOutlet weak var tableView: UITableView!
@@ -117,7 +117,7 @@ class ViewController: UIViewController {
 }
 
 //MARK: TableView data source
-extension ViewController: UITableViewDataSource {
+extension NewsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -169,7 +169,7 @@ extension ViewController: UITableViewDataSource {
 }
 
 //MARK: TableView delegate
-extension ViewController: UITableViewDelegate {
+extension NewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = articles[indexPath.row]
         present(SFSafariViewController(url: article.url), animated: true, completion: nil)
