@@ -129,16 +129,19 @@ extension ViewController: UITableViewDataSource {
                 case .success(let value):
                     print("Do any additional required work with \(value)")
                 case .failure(let error):
-                    tableViewCell.isHidden = true
+                    let placeholderImage = UIImage(named: "newsCellPlaceholder")
+                    tableViewCell.thumbnailView.image = placeholderImage
                     print("Job failed: \(error.localizedDescription)")
                 }
             }
         } else {
-            tableViewCell.isHidden = true
+            let placeholderImage = UIImage(named: "newsCellPlaceholder")
+            tableViewCell.thumbnailView.image = placeholderImage
         }
 
         return tableViewCell
     }
+
     
     private func configureContentText(textToConfigure: String?) -> String {
         if let nonEmtptyTextToConfigure = textToConfigure, nonEmtptyTextToConfigure != "",
