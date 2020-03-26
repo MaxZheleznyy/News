@@ -40,11 +40,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
         configureTableView()
         configureRefreshControl()
+        configureBottomToolBar()
         pullHeadlinesThruViewModel()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +77,14 @@ class ViewController: UIViewController {
         pullHeadlinesThruViewModel()
     }
     
+    private func randomizeRefreshControlColor() {
+        if let nonEmptyColor = refreshControlColorArray.randomElement() {
+            refreshControl.tintColor = nonEmptyColor
+        } else {
+            refreshControl.tintColor = ColorPallete.amazonOrange
+        }
+    }
+    
     private func pullHeadlinesThruViewModel() {
         viewModel.pullFreshHeadlines().subscribe(onSuccess: { [weak self] response in
             self?.articles = response.articles
@@ -87,12 +96,19 @@ class ViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
     
-    private func randomizeRefreshControlColor() {
-        if let nonEmptyColor = refreshControlColorArray.randomElement() {
-            refreshControl.tintColor = nonEmptyColor
-        } else {
-            refreshControl.tintColor = ColorPallete.amazonOrange
-        }
+    private func configureBottomToolBar() {
+        let settingsImage = UIImage(systemName: "gear")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+        let settingsButton = UIBarButtonItem(image: settingsImage, landscapeImagePhone: nil, style: .plain, target: self, action: #selector(settingsTapped))
+
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        toolbarItems = [settingsButton, spacer]
+        
+        navigationController?.setToolbarHidden(false, animated: false)
+    }
+    
+    @objc func settingsTapped() {
+        print("settings tapped")
     }
 }
 
