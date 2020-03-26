@@ -13,6 +13,7 @@ import SafariServices
 
 class ViewController: UIViewController {
     
+    //MARK: Contants and variables
     @IBOutlet weak var tableView: UITableView!
     
     private let refreshControl = UIRefreshControl()
@@ -37,6 +38,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,6 +56,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //MARK: Initial functions
     private func configureTableView() {
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.cellIdentifier)
         
@@ -70,11 +73,6 @@ class ViewController: UIViewController {
         
         randomizeRefreshControlColor()
         refreshControl.addTarget(self, action: #selector(repullHeadlinesThruViewModel(_:)), for: .valueChanged)
-    }
-    
-    @objc private func repullHeadlinesThruViewModel(_ sender: Any) {
-        randomizeRefreshControlColor()
-        pullHeadlinesThruViewModel()
     }
     
     private func randomizeRefreshControlColor() {
@@ -107,11 +105,18 @@ class ViewController: UIViewController {
         navigationController?.setToolbarHidden(false, animated: false)
     }
     
+    //MARK: Actions
+    @objc private func repullHeadlinesThruViewModel(_ sender: Any) {
+        randomizeRefreshControlColor()
+        pullHeadlinesThruViewModel()
+    }
+    
     @objc func settingsTapped() {
         print("settings tapped")
     }
 }
 
+//MARK: TableView data source
 extension ViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -163,6 +168,7 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
+//MARK: TableView delegate
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = articles[indexPath.row]
