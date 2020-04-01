@@ -140,8 +140,8 @@ extension NewsViewController: UITableViewDataSource {
             tableViewCell.thumbnailView.kf.indicatorType = .activity
             tableViewCell.thumbnailView.kf.setImage(with: urlToImage) { result in
                 switch result {
-                case .success(let value):
-                    print("Do any additional required work with \(value)")
+                case .success(_):
+                    print("Image has been set")
                 case .failure(let error):
                     let placeholderImage = UIImage(named: "newsCellPlaceholder")
                     tableViewCell.thumbnailView.image = placeholderImage
