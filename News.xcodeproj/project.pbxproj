@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		503915CC2433C15E0096BACD /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503915CB2433C15E0096BACD /* SettingsTableViewController.swift */; };
+		505DF400242D52C000EB165F /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505DF3FF242D52C000EB165F /* CountriesViewController.swift */; };
+		505DF404242D53F800EB165F /* Contry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505DF403242D53F800EB165F /* Contry.swift */; };
+		505DF40A242D566D00EB165F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505DF409242D566D00EB165F /* SettingsViewModel.swift */; };
+		505DF40C242D5F4700EB165F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 505DF40B242D5F4700EB165F /* Settings.storyboard */; };
 		5074782524187E1A007CEC6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074782424187E1A007CEC6A /* AppDelegate.swift */; };
 		5074782724187E1A007CEC6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074782624187E1A007CEC6A /* SceneDelegate.swift */; };
 		5074782924187E1A007CEC6A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074782824187E1A007CEC6A /* NewsViewController.swift */; };
@@ -25,6 +30,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		503915CB2433C15E0096BACD /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		505DF3FF242D52C000EB165F /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
+		505DF403242D53F800EB165F /* Contry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contry.swift; sourceTree = "<group>"; };
+		505DF409242D566D00EB165F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		505DF40B242D5F4700EB165F /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		5074782124187E1A007CEC6A /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5074782424187E1A007CEC6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5074782624187E1A007CEC6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +99,7 @@
 			children = (
 				5074784224187EC2007CEC6A /* ArticlesResponse.swift */,
 				5074784024187EB4007CEC6A /* Article.swift */,
+				505DF403242D53F800EB165F /* Contry.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -97,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				5074784424187ED9007CEC6A /* NewsViewModel.swift */,
+				505DF409242D566D00EB165F /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -105,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				5074782824187E1A007CEC6A /* NewsViewController.swift */,
+				503915CB2433C15E0096BACD /* SettingsTableViewController.swift */,
+				505DF3FF242D52C000EB165F /* CountriesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -113,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				5074782A24187E1A007CEC6A /* Main.storyboard */,
+				505DF40B242D5F4700EB165F /* Settings.storyboard */,
 				5074784924188197007CEC6A /* NewsTableViewCell.swift */,
 			);
 			path = Views;
@@ -210,6 +225,7 @@
 				5074783124187E1A007CEC6A /* LaunchScreen.storyboard in Resources */,
 				5074782E24187E1A007CEC6A /* Assets.xcassets in Resources */,
 				5074782C24187E1A007CEC6A /* Main.storyboard in Resources */,
+				505DF40C242D5F4700EB165F /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,11 +239,15 @@
 				5074784124187EB4007CEC6A /* Article.swift in Sources */,
 				5074784A24188197007CEC6A /* NewsTableViewCell.swift in Sources */,
 				5074784524187ED9007CEC6A /* NewsViewModel.swift in Sources */,
+				505DF404242D53F800EB165F /* Contry.swift in Sources */,
 				5074782924187E1A007CEC6A /* NewsViewController.swift in Sources */,
 				5074782524187E1A007CEC6A /* AppDelegate.swift in Sources */,
 				5074785A2418C1BB007CEC6A /* ColorPallete.swift in Sources */,
 				5074782724187E1A007CEC6A /* SceneDelegate.swift in Sources */,
+				503915CC2433C15E0096BACD /* SettingsTableViewController.swift in Sources */,
 				5074784324187EC2007CEC6A /* ArticlesResponse.swift in Sources */,
+				505DF400242D52C000EB165F /* CountriesViewController.swift in Sources */,
+				505DF40A242D566D00EB165F /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

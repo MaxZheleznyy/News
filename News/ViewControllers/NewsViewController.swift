@@ -95,7 +95,7 @@ class NewsViewController: UIViewController {
     }
     
     private func configureBottomToolBar() {
-        let settingsImage = UIImage(systemName: "gear")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+        let settingsImage = UIImage(systemName: "gear")
         let settingsButton = UIBarButtonItem(image: settingsImage, landscapeImagePhone: nil, style: .plain, target: self, action: #selector(settingsTapped))
 
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -112,16 +112,15 @@ class NewsViewController: UIViewController {
     }
     
     @objc func settingsTapped() {
-        print("settings tapped")
+        let settingsStoryboard = UIStoryboard(name: "Settings", bundle: nil)
+        guard let settingsNavController = settingsStoryboard.instantiateInitialViewController() as? UINavigationController else { return }
+        settingsNavController.modalPresentationStyle = .formSheet
+        self.present(settingsNavController, animated: true, completion: nil)
     }
 }
 
 //MARK: TableView data source
 extension NewsViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return articles.count
     }
