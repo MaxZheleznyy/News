@@ -79,6 +79,6 @@ extension SettingsTableViewController {
 // MARK: - CountriesViewController delegate
 extension SettingsTableViewController: CountriesViewControllerDelegate {
     func countryTapped(country: Country) {
-        print(country.flagEmoji)
+        UserDefaults.standard.setCountry(id: country.codeID)
     }
 }
