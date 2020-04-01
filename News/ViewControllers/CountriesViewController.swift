@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol CountriesViewControllerDelegate: AnyObject {
+    func countryTapped(country: Country)
+}
+
 class CountriesViewController: UIViewController {
     
     //MARK: Contants and variables
     var countries: [Country] = []
+    
+    weak var delegate: CountriesViewControllerDelegate?
     
     let tableView: UITableView = {
         let tb = UITableView()
@@ -41,11 +47,6 @@ class CountriesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
-    //MARK: Actions
-    @objc func closeSettings() {
-        self.dismiss(animated: true, completion: nil)
-    }
 }
 
 //MARK: TableView data source
@@ -66,8 +67,14 @@ extension CountriesViewController: UITableViewDataSource {
 //MARK: TableView delegate
 extension CountriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let country = countries[indexPath.row]
-        
-        print(country.flagEmoji)
+        if countries.indices.contains(indexPath.row) {
+            let country = countries[indexPath.row]
+            
+            delegate?.countryTapped(country: country)
+            
+            if let navController = self.navigationController {
+                navController.popViewController(animated: true)
+            }
+        }
     }
 }

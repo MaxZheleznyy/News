@@ -12,6 +12,7 @@ class SettingsTableViewController: UITableViewController {
     
     //MARK: Contants and variables
     let settingsViewModel = SettingsViewModel()
+    var countriesViewController: CountriesViewController?
 
     //MARK: Life cycle
     override func viewDidLoad() {
@@ -35,9 +36,9 @@ class SettingsTableViewController: UITableViewController {
     }
 }
 
+// MARK: - TableView configuration
 extension SettingsTableViewController {
     
-    // MARK: - TableView configuration
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
@@ -47,6 +48,7 @@ extension SettingsTableViewController {
         case 0:
             let countriesVC = CountriesViewController()
             countriesVC.countries = settingsViewModel.countries
+            countriesVC.delegate = self
             self.navigationController?.pushViewController(countriesVC, animated: true)
         case 1:
             print("color")
@@ -71,5 +73,12 @@ extension SettingsTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+// MARK: - CountriesViewController delegate
+extension SettingsTableViewController: CountriesViewControllerDelegate {
+    func countryTapped(country: Country) {
+        print(country.flagEmoji)
     }
 }
